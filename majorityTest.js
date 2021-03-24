@@ -14,13 +14,24 @@ if (isNaN(process.argv[2])) {
 const majority = Number(process.argv[2])
 
 while (true) {
+  // get name and check if name is empty
   const name = readlineSync.question('nom: ')
+  if (name.length === 0) {
+    console.log('Sorry, name is empty')
+    continue
+  }
+  // get first name and check if first name is empty
   const firstName = readlineSync.question('firstName: ')
-  const ageStr = readlineSync.question('age: ')
+  if (firstName.length === 0) {
+    console.log('Sorry, first name is empty')
+    continue
+  }
 
-  if (isNaN(ageStr)) {
+  // get age and check if age is a number
+  const ageStr = readlineSync.question('age: ')
+  if (isNaN(ageStr) || ageStr.length === 0) {
     console.log(`Sorry, ${ageStr} is not a number`)
-    process.exit(1)
+    continue
   }
 
   const age = Number(ageStr)
